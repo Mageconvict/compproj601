@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.ci601</groupId>
+  <groupId>org.finalproj</groupId>
   <artifactId>musictheoryapp</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>musictheoryapp</name>
@@ -42,6 +42,16 @@
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
       <version>11.1.2</version>
+    </dependency><dependency>
+      <groupId>com.dlsc.formsfx</groupId>
+      <artifactId>formsfx-core</artifactId>
+      <version>11.6.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.openjfx</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency><dependency>
       <groupId>net.synedra</groupId>
       <artifactId>validatorfx</artifactId>
@@ -114,7 +124,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>org.ci601.musictheoryapp/org.ci601.musictheoryapp.AppMain</mainClass>
+              <mainClass>org.finalproj.musictheoryapp/org.finalproj.musictheoryapp.HelloApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
