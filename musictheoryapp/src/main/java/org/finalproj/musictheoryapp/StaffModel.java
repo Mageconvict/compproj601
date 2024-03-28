@@ -1,9 +1,9 @@
 package org.finalproj.musictheoryapp;
 
-import java.lang.reflect.Array;
+import com.almasb.fxgl.core.collection.Array;
 
 public class StaffModel {
     Cleff cleff;
     int timeSig;
-    Array<> arrBars;
+    Array<BarModel> arrBars;
 }
