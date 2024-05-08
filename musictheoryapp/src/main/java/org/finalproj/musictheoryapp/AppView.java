@@ -16,15 +16,29 @@ public class AppView {
         Scene menu = new Scene(root, sysmod.getScreenWidth(), sysmod.getScreenHeight());
 
         Label title = new Label("Lydear");
-        title.setLayoutX(sysmod.getScreenWidth()/1.3);
-        title.setLayoutY(sysmod.getScreenHeight()/3);
+        title.setLayoutX(sysmod.getScreenWidth()/1.5);
+        title.setLayoutY(sysmod.getScreenHeight()/2.8);
         root.getChildren().add(title);
 
         addButton(root, "Play", 500.00, 380.00);
-        addButton(root, "Settings", 500.00, 480.00);
-        addButton(root, "Exit", 500.00, 580.00);
+        addButton(root, "Settings", 480.00, 480.00);
+        addButton(root, "Exit", 460.00, 580.00);
 
         return menu;
+    }
+
+    public Scene showLesson(){
+        Group root = new Group();
+        Scene lesson = new Scene(root, sysmod.getScreenWidth(), sysmod.getScreenHeight());
+
+        return lesson;
+    }
+
+    public Scene showSettings(){
+        Group root = new Group();
+        Scene settings = new Scene(root, sysmod.getScreenWidth(), sysmod.getScreenHeight());
+
+        return settings;
     }
 
     private void addButton(Group root, String label, Double x, Double y){
