@@ -21,5 +21,7 @@ public class AppController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
-    protected void onPlayButtonClick(){};
+//    protected void onPlayButtonClick(){ view.play.setOnAction(e -> AppMain.stage.setScene());}
+    protected void onSettingsButtonClick(){}
+    protected void onQuitButtonClick(){ System.exit(0); }
 }

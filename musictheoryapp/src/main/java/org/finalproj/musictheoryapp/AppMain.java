@@ -16,13 +16,13 @@ public class AppMain extends Application {
     AppModel appModel = new AppModel();
     AppView appView = new AppView();
     AppController appController = new AppController(appModel, appView);
-    BarModel barModel = new BarModel();
 
     @Override
     public void start(Stage stage) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(AppMain.class.getResource("hello-view.fxml"));
         //Parent root = fxmlLoader.load();
-        Scene scene = appView.showMenu();
+        Scene scene = appView.mainscene;
+        appView.showMenu();
         stage.setTitle("Music Theory Application");
         stage.setScene(scene);
         stage.setFullScreen(true);
