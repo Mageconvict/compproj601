@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
 
@@ -83,6 +84,11 @@ public class AppView {
         back.setLayoutY(100);
         back.setOnAction(e -> showMenu());
         root.getChildren().add(back);
+
+        Slider volume = new Slider(0.0, 100.0, 50.0);
+        volume.setLayoutX(sysmod.getScreenWidth()/2.0);
+        volume.setLayoutY(sysmod.getScreenHeight()/3.0);
+        root.getChildren().add(volume);
     }
 
 //    private void addButton(Group root, String label, Double x, Double y){
