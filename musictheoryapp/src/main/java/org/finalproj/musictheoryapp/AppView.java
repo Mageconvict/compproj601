@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 
 public class AppView {
     SystemModel sysmod = SystemModel.getInstance();
-    Button play = new Button("Play");
+    Font titleFont = new Font("Ubuntu", 40.0);
     Font buttonFont = new Font("Ariel", 20.0);
     Group root = new Group();
     Scene mainscene = new Scene(root);
@@ -18,10 +18,12 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Lydear");
+        title.setFont(titleFont);
         title.setLayoutX(sysmod.getScreenWidth()/1.5);
         title.setLayoutY(sysmod.getScreenHeight()/2.8);
         root.getChildren().add(title);
 
+        Button play = new Button("Play");
         play.setMinSize(200.0, 60.0);
         play.setLayoutX(500.0);
         play.setLayoutY(380.0);
@@ -55,6 +57,7 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Lessons");
+        title.setFont(titleFont);
         title.setLayoutX(sysmod.getScreenWidth()/2.0);
         title.setLayoutY(sysmod.getScreenHeight()/10.0);
         root.getChildren().add(title);
@@ -70,6 +73,7 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Settings");
+        title.setFont(titleFont);
         title.setLayoutX(sysmod.getScreenWidth()/2.0);
         title.setLayoutY(sysmod.getScreenHeight()/10.0);
         root.getChildren().add(title);
