@@ -2,6 +2,11 @@ package org.finalproj.musictheoryapp;
 
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
+import org.yaml.snakeyaml.Yaml;
+
+import java.io.InputStream;
+import java.util.Dictionary;
+import java.util.Objects;
 
 public final class SystemModel {
 
@@ -23,5 +28,20 @@ public final class SystemModel {
     public int getScreenWidth() {
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         return (int)screenBounds.getWidth();
+    }
+
+    public Dictionary<String, Object> readLesson(int i) {
+        Yaml yaml = new Yaml();
+        Dictionary<String, Object> a;
+        try {
+            InputStream inputStream = this.getClass()
+                    .getClassLoader()
+                    .getResourceAsStream("org.finalproj.musictheoryapp/lessoninfo.yaml");
+            a = yaml.load(inputStream);
+        } catch (Exception e){
+            e.printStackTrace();
+            a = null;
+        }
+        return a;
     }
 }

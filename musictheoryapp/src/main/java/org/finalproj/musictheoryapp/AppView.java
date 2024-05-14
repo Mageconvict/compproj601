@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 
 public class AppView {
     SystemModel sysmod = SystemModel.getInstance();
-    Lesson lessonHandler = new Lesson();
+    Lesson lesson;
     Font titleFont = new Font("Ubuntu", 40.0);
     Font buttonFont = new Font("Ariel", 20.0);
     Group root = new Group();
@@ -53,9 +53,9 @@ public class AppView {
     public void showLesson(int i){
         root.getChildren().clear();
 
-        lessonHandler.read(i);
+        lesson.setLessonInfo(sysmod.readLesson(i));
 
-        Label title = new Label(lessonHandler.getTitle());
+        Label title = new Label(lesson.getTitle());
         title.setFont(titleFont);
         title.setLayoutX(sysmod.getScreenWidth()/2.0);
         title.setLayoutY(sysmod.getScreenHeight()/10.0);
