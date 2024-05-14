@@ -14,9 +14,11 @@ public class AppView {
     Font titleFont = new Font("Ubuntu", 40.0);
     Font buttonFont = new Font("Ariel", 20.0);
     Group root = new Group();
+    Group rootPrev = new Group();
     Scene mainscene = new Scene(root);
 
     public void showMenu(){
+        rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
         Label title = new Label("Lydear");
@@ -51,9 +53,14 @@ public class AppView {
     }
 
     public void showLesson(int i){
+        rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
-        lesson.setLessonInfo(sysmod.readLesson(i));
+        try {
+            lesson.setLessonInfo(sysmod.readLesson(i));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 
         Label title = new Label(lesson.getTitle());
         title.setFont(titleFont);
@@ -63,13 +70,19 @@ public class AppView {
         Button back = new Button("Back");
         back.setLayoutX(100);
         back.setLayoutY(100);
-        back.setOnAction(e -> showLessonList());
+        back.setOnAction(e -> root = rootPrev);
+
+        Button settings = new Button("Settings");
+        settings.setLayoutX(1770);
+        settings.setLayoutY(100);
+        settings.setOnAction(e -> showSettings());
 
 
         root.getChildren().addAll(title, back);
     }
 
     public void showLessonList(){
+        rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
         Label title = new Label("Lessons");
@@ -93,24 +106,28 @@ public class AppView {
     }
 
     public void showSettings(){
+        rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
         Label title = new Label("Settings");
         title.setFont(titleFont);
         title.setLayoutX(sysmod.getScreenWidth()/2.0);
         title.setLayoutY(sysmod.getScreenHeight()/10.0);
-        root.getChildren().add(title);
 
         Button back = new Button("Back");
         back.setLayoutX(100);
         back.setLayoutY(100);
-        back.setOnAction(e -> showMenu());
-        root.getChildren().add(back);
+        back.setOnAction(e -> {
+            root.getChildren().clear();
+            root.getChildren().addAll(rootPrev.getChildren());
+            rootPrev.getChildren().clear();
+        });
 
         Slider volume = new Slider(0.0, 100.0, 50.0);
         volume.setLayoutX(sysmod.getScreenWidth()/2.0);
         volume.setLayoutY(sysmod.getScreenHeight()/3.0);
-        root.getChildren().add(volume);
+
+        root.getChildren().addAll(title, back, volume);
     }
 
 //    private void addButton(Group root, String label, Double x, Double y){
