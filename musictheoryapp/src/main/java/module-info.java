@@ -9,6 +9,8 @@ module org.finalproj.musictheoryapp {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
+    requires org.yaml.snakeyaml;
 
     opens org.finalproj.musictheoryapp to javafx.fxml;
     exports org.finalproj.musictheoryapp;
