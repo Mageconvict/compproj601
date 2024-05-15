@@ -26,26 +26,13 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Lydear");
-        title.setFont(titleFont);
-        title.setLayoutX(sysmod.getScreenWidth()/1.5);
-        title.setLayoutY(sysmod.getScreenHeight()/2.8);
-        root.getChildren().add(title);
+        title.setFont(titleFont);   title.setLayoutX(sysmod.getScreenWidth()/1.5);  title.setLayoutY(sysmod.getScreenHeight()/2.8);
 
         Button play = new Button("Play");
-        play.setMinSize(200.0, 60.0);
-        play.setLayoutX(500.0);
-        play.setLayoutY(380.0);
-        play.setFont(buttonFont);
-        play.setOnAction(e -> showLessonList());
-        root.getChildren().add(play);
+        play.setMinSize(200.0, 60.0);   play.setLayoutX(500.0); play.setLayoutY(380.0); play.setFont(buttonFont);   play.setOnAction(e -> showLessonList());
 
         Button settings = new Button("Settings");
-        settings.setMinSize(200.0, 60.0);
-        settings.setLayoutX(480.0);
-        settings.setLayoutY(480.0);
-        settings.setFont(buttonFont);
-        settings.setOnAction(e -> showSettings());
-        root.getChildren().add(settings);
+        settings.setMinSize(200.0, 60.0);   settings.setLayoutX(480.0); settings.setLayoutY(480.0); settings.setFont(buttonFont);   settings.setOnAction(e -> showSettings());
 
         Button quit = new Button("Quit");
         quit.setMinSize(200.0, 60.0);
@@ -53,7 +40,8 @@ public class AppView {
         quit.setLayoutY(580.0);
         quit.setFont(buttonFont);
         quit.setOnAction(e -> System.exit(0));
-        root.getChildren().add(quit);
+
+        root.getChildren().addAll(title, play, settings, quit);
     }
 
     public void showLesson(int i){
@@ -71,13 +59,10 @@ public class AppView {
 //        }
 
         Label title = new Label(lesson.getTitle());
-        title.setFont(titleFont);
-        title.setLayoutX(sysmod.getScreenWidth()/2.0);
-        title.setLayoutY(sysmod.getScreenHeight()/10.0);
+        title.setFont(titleFont);   title.setLayoutX(sysmod.getScreenWidth()/2.0);  title.setLayoutY(sysmod.getScreenHeight()/10.0);
 
         Button back = new Button("Back");
-        back.setLayoutX(100);
-        back.setLayoutY(100);
+        back.setLayoutX(100);   back.setLayoutY(100);
         back.setOnAction(e -> {
             root.getChildren().clear();
             root.getChildren().addAll(rootPrev.getChildren());
@@ -85,9 +70,7 @@ public class AppView {
         });
 
         Button settings = new Button("Settings");
-        settings.setLayoutX(1770);
-        settings.setLayoutY(100);
-        settings.setOnAction(e -> showSettings());
+        settings.setLayoutX(1770);  settings.setLayoutY(100);   settings.setOnAction(e -> showSettings());
 
 
         root.getChildren().addAll(title, back, settings);
