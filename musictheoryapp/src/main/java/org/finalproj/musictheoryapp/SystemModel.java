@@ -37,7 +37,7 @@ public final class SystemModel {
             InputStream inputStream = this.getClass()
                     .getClassLoader()
                     .getResourceAsStream("org.finalproj.musictheoryapp/lessoninfo.yaml");
-            a = yaml.load(inputStream);
+            a = yaml.loadAs(inputStream, Dictionary.class);
         } catch (Exception e){
             e.printStackTrace();
             a = null;

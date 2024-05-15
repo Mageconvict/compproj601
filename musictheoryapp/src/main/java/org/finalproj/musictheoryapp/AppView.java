@@ -10,7 +10,7 @@ import javafx.scene.text.Font;
 
 public class AppView {
     SystemModel sysmod = SystemModel.getInstance();
-    Lesson lesson;
+    Lesson lesson = new Lesson();
     Font titleFont = new Font("Ubuntu", 40.0);
     Font buttonFont = new Font("Ariel", 20.0);
     Group root = new Group();
@@ -58,8 +58,12 @@ public class AppView {
 
         try {
             lesson.setLessonInfo(sysmod.readLesson(i));
+            System.out.println(lesson.getLessonInfo());
+            System.out.println(lesson.getTitle());
+            System.out.println(lesson.getText());
         } catch(Exception e) {
             e.printStackTrace();
+            System.out.println("Can't read lessoninfo");
         }
 
         Label title = new Label(lesson.getTitle());
@@ -70,7 +74,11 @@ public class AppView {
         Button back = new Button("Back");
         back.setLayoutX(100);
         back.setLayoutY(100);
-        back.setOnAction(e -> root = rootPrev);
+        back.setOnAction(e -> {
+            root.getChildren().clear();
+            root.getChildren().addAll(rootPrev.getChildren());
+            rootPrev.getChildren().clear();
+        });
 
         Button settings = new Button("Settings");
         settings.setLayoutX(1770);
@@ -89,13 +97,15 @@ public class AppView {
         title.setFont(titleFont);
         title.setLayoutX(sysmod.getScreenWidth()/2.0);
         title.setLayoutY(sysmod.getScreenHeight()/10.0);
-//        root.getChildren().add(title);
 
         Button back = new Button("Back");
         back.setLayoutX(100);
         back.setLayoutY(100);
-        back.setOnAction(e -> showMenu());
-//        root.getChildren().add(back);
+        back.setOnAction(e -> {
+            root.getChildren().clear();
+            root.getChildren().addAll(rootPrev.getChildren());
+            rootPrev.getChildren().clear();
+        });
 
         Button lesson1 = new Button("Lesson One");
         lesson1.setLayoutX(400);

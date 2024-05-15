@@ -7,6 +7,8 @@ import javafx.scene.shape.Line;
 import java.util.ArrayList;
 
 public class BarModel {
+    int noOfBars = 0;
+
     Line line1 = new Line(200, 500, 1760, 500);
     Line line2 = new Line(200, 520, 1760, 520);
     Line line3 = new Line(200, 540, 1760, 540);

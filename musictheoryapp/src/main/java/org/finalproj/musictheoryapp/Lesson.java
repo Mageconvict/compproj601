@@ -8,15 +8,10 @@ import java.util.Map;
 import org.yaml.snakeyaml.Yaml;
 
 public class Lesson {
-    /*
-    title
-    staff
-    text
-     */
-
-    private String title;
+    private String title = "";
     private List<String> text;
     private Dictionary<String, Object> lessonInfo;
+    private Cleff cleff = Cleff.TREBLECLEFF;
 
     public String getTitle() {
         return title;
@@ -40,5 +35,7 @@ public class Lesson {
 
     public void setLessonInfo(Dictionary<String, Object> lessonInfo) {
         this.lessonInfo = lessonInfo;
+        title = (String) lessonInfo.get("title");
+        text = (List<String>) lessonInfo.get("text");
     }
 }
