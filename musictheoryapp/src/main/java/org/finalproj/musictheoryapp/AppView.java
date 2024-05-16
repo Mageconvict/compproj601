@@ -10,9 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AppView {
     SystemModel sysmod = SystemModel.getInstance();
-    Lesson lesson = new Lesson();
     Font titleFont = new Font("Ubuntu", 40.0);
     Font buttonFont = new Font("Ariel", 20.0);
 //    Image backArrow = new Image("resources/org/finalproj/musictheoryapp/arrow.png");
@@ -21,12 +24,18 @@ public class AppView {
     Group rootPrev = new Group();
     Scene mainscene = new Scene(root);
 
+    //Test Lesson
+    List<String> lessonText = Arrays.asList("one", "two", "three");
+    Lesson testLesson = new Lesson("The Staff", lessonText, Cleff.TREBLECLEFF);
+
+    LessonView lessonView = new LessonView(testLesson);
+
     public void showMenu(){
         rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
         Label title = new Label("Lydear");
-        title.setFont(titleFont);   title.setLayoutX(sysmod.getScreenWidth()/1.5);  title.setLayoutY(sysmod.getScreenHeight()/2.8);
+        title.setFont(titleFont);   title.setLayoutX(970.00);  title.setLayoutY(sysmod.getScreenHeight()/2.8);
 
         Button play = new Button("Play");
         play.setMinSize(200.0, 60.0);   play.setLayoutX(500.0); play.setLayoutY(380.0); play.setFont(buttonFont);   play.setOnAction(e -> showLessonList());
@@ -48,19 +57,6 @@ public class AppView {
         rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
-//        try {
-//            lesson.setLessonInfo(sysmod.readLesson(i));
-//            System.out.println(lesson.getLessonInfo());
-//            System.out.println(lesson.getTitle());
-//            System.out.println(lesson.getText());
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//            System.out.println("Can't read lessoninfo");
-//        }
-
-        Label title = new Label(lesson.getTitle());
-        title.setFont(titleFont);   title.setLayoutX(sysmod.getScreenWidth()/2.0);  title.setLayoutY(sysmod.getScreenHeight()/10.0);
-
         Button back = new Button("Back");
         back.setLayoutX(100);   back.setLayoutY(100);
         back.setOnAction(e -> {
@@ -72,8 +68,7 @@ public class AppView {
         Button settings = new Button("Settings");
         settings.setLayoutX(1770);  settings.setLayoutY(100);   settings.setOnAction(e -> showSettings());
 
-
-        root.getChildren().addAll(title, back, settings);
+        root.getChildren().addAll(lessonView.showLessonView(), back, settings);
     }
 
     public void showLessonList(){
@@ -81,9 +76,7 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Lessons");
-        title.setFont(titleFont);
-        title.setLayoutX(sysmod.getScreenWidth()/2.0);
-        title.setLayoutY(sysmod.getScreenHeight()/10.0);
+        title.setFont(titleFont); title.setLayoutX(970.00); title.setLayoutY(sysmod.getScreenHeight()/10.0);
 
         Button back = new Button("Back");
         back.setLayoutX(100);
@@ -107,9 +100,7 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Settings");
-        title.setFont(titleFont);
-        title.setLayoutX(sysmod.getScreenWidth()/2.0);
-        title.setLayoutY(sysmod.getScreenHeight()/10.0);
+        title.setFont(titleFont); title.setLayoutX(970.00); title.setLayoutY(sysmod.getScreenHeight()/10.0);
 
         Button back = new Button("Back");
         back.setLayoutX(100);

@@ -6,14 +6,18 @@ import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
+import java.util.List;
 
 public class SoundModel {
     private MidiChannel channel;
 
-    private void handleSound() {
+    private void handleSound(List<Note> notes) {
         loadChannel();
+        channel.setMono(true);
 
-        channel.noteOn(60, 90);
+        for (Note note : notes) {
+            channel.noteOn(note.getPitch(), note.getDynamic());
+        }
     }
 
     private void loadChannel() {

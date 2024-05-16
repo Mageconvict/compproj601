@@ -5,5 +5,5 @@ import com.almasb.fxgl.core.collection.Array;
 public class StaffModel {
     Cleff cleff;
     int timeSig;
-    Array<BarModel> arrBars;
+    Array<Bar> arrBars;
 }
