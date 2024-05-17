@@ -1,5 +1,7 @@
 package org.finalproj.musictheoryapp;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -115,12 +117,31 @@ public class AppView {
 
         Label volumeLabel = new Label("Volume");
         volumeLabel.setFont(textFont);
-        volumeLabel.setLayoutX(400); volumeLabel.setLayoutY(400);
+        volumeLabel.setLayoutX(300); volumeLabel.setLayoutY(390);
         Slider volume = new Slider(0.0, 100.0, 50.0);
         volume.setShowTickLabels(true); volume.setMajorTickUnit(25);
         volume.setLayoutX(500); volume.setLayoutY(400);
+        volume.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
 
-        root.getChildren().addAll(title, back, volume);
+            }
+        });
+
+        Label accessibleFont = new Label("Accessible font");
+        accessibleFont.setFont(textFont);
+        accessibleFont.setLayoutX(300); accessibleFont.setLayoutY(460);
+        Button accessibleButton = new Button("Change the font!");
+        accessibleButton.setFont(buttonFont);
+        accessibleButton.setLayoutX(500); accessibleButton.setLayoutY(460);
+        accessibleButton.setOnAction(e -> {
+            if(textFont.getName().equals("Ariel")) {
+                textFont = new Font("Verdana", 22.0);
+            } else textFont = new Font("Ariel", 18.0);
+        });
+
+
+        root.getChildren().addAll(title, back, volumeLabel, volume, accessibleFont, accessibleButton);
     }
 
 //    private void addButton(Group root, String label, Double x, Double y){
