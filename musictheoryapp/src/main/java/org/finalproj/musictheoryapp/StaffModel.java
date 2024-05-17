@@ -1,9 +1,13 @@
 package org.finalproj.musictheoryapp;
 
-import com.almasb.fxgl.core.collection.Array;
-
 public class StaffModel {
-    Cleff cleff;
-    int timeSig;
-    Array<Bar> arrBars;
+    private Cleff cleff;
+    private int timeSig;
+    private Bar bar;
+
+    public StaffModel(Cleff cleff, int timeSig, Bar arrBars) {
+        this.cleff = cleff;
+        this.timeSig = timeSig;
+        this.bar = arrBars;
+    }
 }

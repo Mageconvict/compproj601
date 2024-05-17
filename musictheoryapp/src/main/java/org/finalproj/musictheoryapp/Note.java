@@ -4,7 +4,7 @@ public class Note {
     private int pitch;
     private int dynamic;
 
-    public void note(int pitch, int duration) {
+    public Note(int pitch, int duration) {
         this.pitch = pitch;
         this.dynamic = duration;
     }

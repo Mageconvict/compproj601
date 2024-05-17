@@ -16,8 +16,9 @@ import java.util.List;
 
 public class AppView {
     SystemModel sysmod = SystemModel.getInstance();
-    Font titleFont = new Font("Ubuntu", 40.0);
-    Font buttonFont = new Font("Ariel", 20.0);
+    public static Font titleFont = new Font("Ubuntu", 50.0);
+    public static Font buttonFont = new Font("Ariel", 20.0);
+    public static Font textFont = new Font("Ariel", 18.0);
 //    Image backArrow = new Image("resources/org/finalproj/musictheoryapp/arrow.png");
 //    ImageView backArrowView = new ImageView(backArrow);
     Group root = new Group();
@@ -25,7 +26,7 @@ public class AppView {
     Scene mainscene = new Scene(root);
 
     //Test Lesson
-    List<String> lessonText = Arrays.asList("one", "two", "three");
+    List<String> lessonText = Arrays.asList("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed tristique felis, vitae sodales neque. Aliquam egestas pharetra diam quis finibus. Donec malesuada mi ac purus hendrerit pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac odio nulla. Fusce at velit ut augue feugiat gravida. Donec et est egestas, ultrices enim a, congue dolor. Nullam luctus dignissim pretium. Sed ullamcorper blandit lectus, quis ultricies libero hendrerit quis. Nullam laoreet dui quis libero dictum, a condimentum nisi rutrum. Fusce semper nisi et dapibus mollis. Pellentesque orci ipsum, aliquam eget nunc nec, tempor dignissim mi. Suspendisse sem tortor, accumsan eu nunc nec, tempor auctor nisi.", "two", "three");
     Lesson testLesson = new Lesson("The Staff", lessonText, Cleff.TREBLECLEFF);
 
     LessonView lessonView = new LessonView(testLesson);
@@ -34,8 +35,8 @@ public class AppView {
         rootPrev.getChildren().addAll(root.getChildren());
         root.getChildren().clear();
 
-        Label title = new Label("Lydear");
-        title.setFont(titleFont);   title.setLayoutX(970.00);  title.setLayoutY(sysmod.getScreenHeight()/2.8);
+        Label title = new Label("Musetone");
+        title.setFont(titleFont);   title.setLayoutX(1480.00);  title.setLayoutY(sysmod.getScreenHeight()/2.8);
 
         Button play = new Button("Play");
         play.setMinSize(200.0, 60.0);   play.setLayoutX(500.0); play.setLayoutY(380.0); play.setFont(buttonFont);   play.setOnAction(e -> showLessonList());
@@ -76,7 +77,7 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Lessons");
-        title.setFont(titleFont); title.setLayoutX(970.00); title.setLayoutY(sysmod.getScreenHeight()/10.0);
+        title.setFont(titleFont); title.setLayoutX(870.00); title.setLayoutY(sysmod.getScreenHeight()/10.0);
 
         Button back = new Button("Back");
         back.setLayoutX(100);
@@ -100,7 +101,7 @@ public class AppView {
         root.getChildren().clear();
 
         Label title = new Label("Settings");
-        title.setFont(titleFont); title.setLayoutX(970.00); title.setLayoutY(sysmod.getScreenHeight()/10.0);
+        title.setFont(titleFont); title.setLayoutX(870.00); title.setLayoutY(sysmod.getScreenHeight()/10.0);
 
         Button back = new Button("Back");
         back.setLayoutX(100);
@@ -112,9 +113,12 @@ public class AppView {
             rootPrev.getChildren().clear();
         });
 
+        Label volumeLabel = new Label("Volume");
+        volumeLabel.setFont(textFont);
+        volumeLabel.setLayoutX(400); volumeLabel.setLayoutY(400);
         Slider volume = new Slider(0.0, 100.0, 50.0);
-        volume.setLayoutX(sysmod.getScreenWidth()/2.0);
-        volume.setLayoutY(sysmod.getScreenHeight()/3.0);
+        volume.setShowTickLabels(true); volume.setMajorTickUnit(25);
+        volume.setLayoutX(500); volume.setLayoutY(400);
 
         root.getChildren().addAll(title, back, volume);
     }

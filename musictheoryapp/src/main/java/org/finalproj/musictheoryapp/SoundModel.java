@@ -11,9 +11,11 @@ import java.util.List;
 public class SoundModel {
     private MidiChannel channel;
 
-    private void handleSound(List<Note> notes) {
+    public void handleSound(Bar bar) {
         loadChannel();
         channel.setMono(true);
+
+        List<Note> notes = bar.getNotes();
 
         for (Note note : notes) {
             channel.noteOn(note.getPitch(), note.getDynamic());
