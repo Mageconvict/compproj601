@@ -1,30 +1,27 @@
 package org.finalproj.musictheoryapp;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.List;
-import java.util.Map;
-import org.yaml.snakeyaml.Yaml;
 
 // Contains lesson information which should be read in from yaml file,
 // which is passed on to handle screen display and sound handling
 
-public class Lesson {
+public class LessonConfig {
     private String title = "";
-    private List<String> text = new ArrayList<String>();
+    private List<String> text;
     private Dictionary<String, Object> lessonInfo;
     private Cleff cleff = Cleff.TREBLECLEFF;
     public List<Note> notes = new ArrayList<>();
-    public Bar bar = new Bar(1, null);
+    public Bar bar = new Bar(1, notes);
 
     public StaffModel staffModel = new StaffModel(cleff, 4, bar);
 
-    public Lesson(String title, List<String> text, Cleff cleff) {
+    public LessonConfig(String title, List<String> text, Cleff cleff, List<Note> notes) {
         this.title = title;
         this.text = text;
         this.cleff = cleff;
-        populateNotes();
+        this.notes = notes;
     }
 
     public String getTitle() {
@@ -52,11 +49,18 @@ public class Lesson {
         title = (String) lessonInfo.get("title");
         text = (List<String>) lessonInfo.get("text");
     }
-    public void populateNotes() {
-        notes.add(new Note(60, 90));
-        notes.add(new Note(80, 90));
-        notes.add(new Note(40, 90));
-
-        bar = new Bar(1, notes);
+    public List<Note> getNotes() {
+        return notes;
     }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
+    //    public void populateNotes() {
+//        notes.add(new Note(60, 90));
+//        notes.add(new Note(80, 90));
+//        notes.add(new Note(40, 90));
+//
+//        bar = new Bar(1, notes);
+//    }
 }

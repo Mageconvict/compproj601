@@ -5,8 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Shape;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.util.List;
@@ -14,18 +12,18 @@ import java.util.List;
 public class LessonView {
 
     AppModel appModel = AppModel.getInstance();
-    Lesson lesson;
+    LessonConfig lessonConfig;
     int textNo = 0;
 
-    public LessonView(Lesson lesson) {
-        this.lesson = lesson;
+    public LessonView(LessonConfig lessonConfig) {
+        this.lessonConfig = lessonConfig;
     }
 
     public Group showLessonView() {
 //        int textNo = 0; //Tracks which text in the array to display
         Group root = new Group();
 
-        Label title = new Label(lesson.getTitle());
+        Label title = new Label(lessonConfig.getTitle());
         title.setFont(AppView.titleFont); title.setLayoutX(870.00); title.setLayoutY(100.00);
 
         Text text = new Text();
@@ -52,7 +50,7 @@ public class LessonView {
         Button play = new Button("Play");
         play.setFont(AppView.buttonFont);
         play.setLayoutX(1780.00); play.setLayoutY(500.00);
-        play.setOnAction( e -> appModel.soundModel.handleSound(lesson.bar));
+        play.setOnAction( e -> appModel.soundModel.handleSound(lessonConfig.bar));
 
         root.getChildren().addAll(showStaff().getChildren());
         root.getChildren().addAll(showNotes().getChildren());
@@ -79,7 +77,7 @@ public class LessonView {
     private Group showNotes() {
         Group root = new Group();
         int xCoor = 540;
-        List<Note> notes = lesson.notes;
+        List<Note> notes = lessonConfig.notes;
         for(Note note : notes) {
             Circle circle = new Circle();
             circle.setCenterX(xCoor+= 80); circle.setCenterY(660 - note.getPitch()); circle.setRadius(15);
@@ -90,7 +88,7 @@ public class LessonView {
     }
 
     private String showText(int i) {
-        return lesson.getText().get(i);
+        return lessonConfig.getText().get(i);
     }
 
 }

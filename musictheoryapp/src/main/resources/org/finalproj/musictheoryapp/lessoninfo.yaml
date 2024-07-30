@@ -5,3 +5,13 @@
       - Lorem ipsum one
       - Lorem ipsum two
       - Lorem ipsum three
+    notes:
+      - note1:
+          - 60
+          - 90
+      - note2:
+          - 80
+          - 90
+      - note3:
+          - 50
+          - 90

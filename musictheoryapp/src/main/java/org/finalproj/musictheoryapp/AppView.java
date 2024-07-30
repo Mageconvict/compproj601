@@ -28,10 +28,11 @@ public class AppView {
     Scene mainscene = new Scene(root);
 
     //Test Lesson
-    List<String> lessonText = Arrays.asList("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed tristique felis, vitae sodales neque. Aliquam egestas pharetra diam quis finibus. Donec malesuada mi ac purus hendrerit pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac odio nulla. Fusce at velit ut augue feugiat gravida. Donec et est egestas, ultrices enim a, congue dolor. Nullam luctus dignissim pretium. Sed ullamcorper blandit lectus, quis ultricies libero hendrerit quis. Nullam laoreet dui quis libero dictum, a condimentum nisi rutrum. Fusce semper nisi et dapibus mollis. Pellentesque orci ipsum, aliquam eget nunc nec, tempor dignissim mi. Suspendisse sem tortor, accumsan eu nunc nec, tempor auctor nisi.", "two", "three");
-    Lesson testLesson = new Lesson("The Staff", lessonText, Cleff.TREBLECLEFF);
-
-    LessonView lessonView = new LessonView(testLesson);
+//    List<String> lessonText = Arrays.asList("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed tristique felis, vitae sodales neque. Aliquam egestas pharetra diam quis finibus. Donec malesuada mi ac purus hendrerit pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac odio nulla. Fusce at velit ut augue feugiat gravida. Donec et est egestas, ultrices enim a, congue dolor. Nullam luctus dignissim pretium. Sed ullamcorper blandit lectus, quis ultricies libero hendrerit quis. Nullam laoreet dui quis libero dictum, a condimentum nisi rutrum. Fusce semper nisi et dapibus mollis. Pellentesque orci ipsum, aliquam eget nunc nec, tempor dignissim mi. Suspendisse sem tortor, accumsan eu nunc nec, tempor auctor nisi.", "two", "three");
+//    List<Note> notes = [Note note1 = new Note(60, 90)];
+//    Lesson testLesson = new Lesson("The Staff", lessonText, Cleff.TREBLECLEFF, notes);
+//
+    LessonView lessonView = new LessonView(null);
 
     public void showMenu(){
         rootPrev.getChildren().addAll(root.getChildren());
